@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+object "Reservation" as r 
+object "Screening" as s
+object "Movie" as m
+object "DiscountCondition" as c
+object "SequenceCondition" as sc
+object "PeriodCondition" as pc
+
+package discountPolicy <<Rectangle>> {
+object "DiscountPolicy" as p
+object "AmountDiscountPolicy" as adp
+object "PercentDiscountPolicy" as pdp
+}
+
+
+r "*" -- "1" s
+s "*" -- "1" m
+m  "1" -- "0..1" p
+adp --> p
+pdp --> p
+
+
+p "1" -- "1..0" c
+sc --> c
+pc --> c
+
+@enduml

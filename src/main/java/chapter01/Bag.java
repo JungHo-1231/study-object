@@ -22,8 +22,9 @@ public class Bag {
 
     /**
      * 이벤트에 당첨된 관람객, 현금과 초대쟁이 있다.
+     *
      * @param invitation 초대
-     * @param ticket 현금
+     * @param ticket     현금
      */
     public Bag(Invitation invitation, Ticket ticket) {
         this.invitation = invitation;
@@ -49,5 +50,16 @@ public class Bag {
      */
     public void plusAmount(Long amount) {
         this.amount += amount;
+    }
+
+    public Long hold(Ticket ticket) {
+        if (hasInvitation()) {
+            setTicket(ticket);
+            return 0L;
+        }
+
+        setTicket(ticket);
+        minusAmount(ticket.getFee());
+        return ticket.getFee();
     }
 }

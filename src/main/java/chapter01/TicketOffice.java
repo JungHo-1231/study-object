@@ -34,14 +34,18 @@ public class TicketOffice {
     /**
      * 판매 금액을 차감한다
      */
-    public void minusAmount(Long amount) {
+    private void minusAmount(Long amount) {
         this.amount -= amount;
     }
 
     /**
      * 판매 금액을 더한다
      */
-    public void plusAmount(Long amount) {
+    private void plusAmount(Long amount) {
         this.amount+= amount;
+    }
+
+    public void sellTicketTo(Audience audience) {
+        plusAmount(audience.buy(getTicket()));
     }
 }

@@ -6,7 +6,7 @@ import lombok.Getter;
  * 티켓 판매원
  */
 public class TicketSeller {
-    @Getter
+
     private TicketOffice ticketOffice;
 
     /**
@@ -14,5 +14,9 @@ public class TicketSeller {
      */
     public TicketSeller(TicketOffice ticketOffice) {
         this.ticketOffice = ticketOffice;
+    }
+
+    public void sellTo(Audience audience) {
+        ticketOffice.sellTicketTo(audience);
     }
 }

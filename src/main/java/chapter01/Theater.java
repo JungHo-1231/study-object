@@ -12,19 +12,22 @@ public class Theater {
 
     /**
      * 관람객을 맞이한다.
+     *
      * @param audience 관람객
      */
     public void enter(Audience audience) {
-        if (audience.getBag().hasInvitation()) {
-            // 초대장이 있는 관람객인 경우
-            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-            audience.getBag().setTicket(ticket);
-        } else {
-            // 초대장이 없는 관람객일 경우
-            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-            audience.getBag().minusAmount(ticket.getFee());
-            ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
-            audience.getBag().setTicket(ticket);
-        }
+        ticketSeller.sellTo(audience);
+
+//        if (audience.getBag().hasInvitation()) {
+//            // 초대장이 있는 관람객인 경우
+//            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
+//            audience.getBag().setTicket(ticket);
+//        } else {
+//            // 초대장이 없는 관람객일 경우
+//            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
+//            audience.getBag().minusAmount(ticket.getFee());
+//            ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
+//            audience.getBag().setTicket(ticket);
+//        }
     }
 }

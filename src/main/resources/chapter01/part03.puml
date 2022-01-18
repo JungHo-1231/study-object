@@ -3,13 +3,10 @@ left to right direction
 
 object ":Theater" as t
 object "audience : Audience" as a
-object "bag:Bag" as b
 object "ticketSeller:TicketSeller" as s
 object "ticketOffice:TicketOffice" as o
 
-t --> a : 1: bag = getBag()
-t --> b : 2: invited = hasInvitation()
-t --> s : 3: office = getTicketOffice()
-t --> o : 4: ticket = getTicket()
-
+t --> s : 1: sellTo(audience)
+s --> o : 2: ticket = getTicket()\n 4: plausAmount(amount)
+s -> a : 3: amount = buy(ticket)
 @enduml

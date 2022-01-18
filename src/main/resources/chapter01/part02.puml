@@ -1,11 +1,15 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+left to right direction
 
-autonumber
+object ":Theater" as t
+object "audience : Audience" as a
+object "bag:Bag" as b
+object "ticketSeller:TicketSeller" as s
+object "ticketOffice:TicketOffice" as o
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+t --> a : 1: bag = getBag()
+t --> b : 2: invited = hasInvitation()
+t --> s : 3: office = getTicketOffice()
+t --> o : 4: ticket = getTicket()
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
 @enduml

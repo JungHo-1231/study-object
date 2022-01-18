@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+class "Audience" as a
+class "Invitation" as i
+class "Ticket" as t
+class "Bag" as b
+class "TicketOffice" as o
+class "TicketSeller" as s
+
+a ---> b :bag
+b ---> i :invitation
+b ---> t :ticket
+s ---> o :"TicketOffice"
+o ---> t :tickets
+
+@enduml

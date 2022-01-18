@@ -40,7 +40,7 @@ public class Bag {
     /**
      * 현금을 감소시킨다.
      */
-    public void minusAmount(Ticket ticket) {
+    public void minusAmount(Long amount) {
         this.amount -= amount;
     }
 

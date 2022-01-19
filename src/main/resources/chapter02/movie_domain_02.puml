@@ -4,14 +4,20 @@ left to right direction
 object "Reservation" as r 
 object "Screening" as s
 object "Movie" as m
+
+package discountCondition <<Rectangle>> {
+
 object "DiscountCondition" as c
 object "SequenceCondition" as sc
 object "PeriodCondition" as pc
 
+}
 package discountPolicy <<Rectangle>> {
+
 object "DiscountPolicy" as p
 object "AmountDiscountPolicy" as adp
 object "PercentDiscountPolicy" as pdp
+
 }
 
 

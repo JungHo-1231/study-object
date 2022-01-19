@@ -1,0 +1,19 @@
+@startuml
+
+class "Movie" as m
+class "DiscountPolicy" as p
+interface "DiscountCondition" as c
+
+class SequenceCondition implements c
+class PeriodCondition implements c
+
+class "AmountDiscountPolicy" as ad
+class "PercentDiscountPolicy" as pd
+
+m -> p :discountPolicy
+
+ad -up-> p
+pd -up-> p
+
+p -right-> c : * \n conditions
+@enduml

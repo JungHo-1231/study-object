@@ -1,0 +1,20 @@
+@startuml
+
+class "Movie" as m{
+    +calculateMovieFee()
+}
+
+class "DiscountPolicy" as p {
++ calculateDiscountAmount()
+# getDiscountAmount();
+}
+
+interface "DiscountCondition" as c {
++ isSatisfiedBy()
+}
+
+m -> p :discountPolicy
+
+p -right-> c : * \n conditions
+
+@enduml

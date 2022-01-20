@@ -1,0 +1,20 @@
+@startuml
+left to right  direction
+allow_mixing
+
+Actor "client"  as c
+object "screening:Screening" as s
+object "Movie" as m
+object ":AmountDiscountPolicy" as ap
+object ":SequenceCondition" as sq
+object ":Reservation" as r
+
+
+c -right- s : 1:reserve(Customer, audienceCount) >
+s -down- m : 2:calculateMovieFee(screening) >
+m -down- ap : 3:calculateDiscountAmount(screening) >
+ap -right- sq :4:isSatisfied(screening) *  >
+ap -- ap  : 5: getDiscountAmount(screening) >
+s -right- r : 6:<<create>>
+
+@enduml

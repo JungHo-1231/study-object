@@ -26,6 +26,7 @@ public abstract class DefaultDiscountPolicy implements DiscountPolicy {
      * @param screening
      * @return
      */
+    @Override
     public Money calculateDiscountAmount(Screening screening) {
         for (DiscountCondition each : conditions) {
             if (each.isSatisfied(screening)) {

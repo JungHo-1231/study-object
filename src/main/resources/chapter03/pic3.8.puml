@@ -1,0 +1,10 @@
+@startuml
+
+object ":Movie" as m
+object ":DiscountPolicy" as d
+object ":DiscountCondition(s)" as dc
+
+m -down- d :1:calculateDiscountAmount(screening) >
+d -right- dc :2:isSatisfiedBy(screening) * >
+
+@enduml

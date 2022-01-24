@@ -1,0 +1,16 @@
+@startuml
+allow_mixing
+
+actor "client" as c
+object ":Screening" as s
+object ":Movie" as m
+object ":DiscountCondition(s)" as dc
+object ":Reservation" as r
+
+c -right-> s : 1:예매하라
+s -right-> m : 2:가격을 계산하라
+m -down-> dc : 3:할인 여부를 판단하라
+s -down-> r : 4:<<create>>
+
+
+@enduml

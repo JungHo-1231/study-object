@@ -1,0 +1,8 @@
+@startuml
+object ":Screening" as s
+object "Movie" as m 
+
+s -right-> m :  가격을 게산하라 >
+m -left-> s :  예매 요금  >
+
+@enduml

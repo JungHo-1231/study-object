@@ -1,0 +1,14 @@
+@startuml
+'left to right direction
+
+object "Call" as c
+
+abstract "AbstractPhone" as ap
+
+class Phone implements ap
+class NightlyDiscountPhone implements ap
+
+ap -right-> c :*
+
+
+@enduml

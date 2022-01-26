@@ -11,7 +11,7 @@ import java.util.List;
  * <p>
  * 밤 10시 이후 통화에 대한 요금 할인 해주는 방식
  */
-public class NightlyDiscountPhone {
+public class NightlyDiscountPhone extends AbstractPhone {
     private static final int LATE_NIGHT_HOUR = 22;
 
     // 밤 10시 이전에 적용할 통화 요금
@@ -19,7 +19,6 @@ public class NightlyDiscountPhone {
     // 밤 10시 이후에 적용할 통화 요금
     private Money nightlyAmount;
     private Duration seconds;
-    private List<Call> calls = new ArrayList<>();
 
     public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds) {
         this.nightlyAmount = nightlyAmount;
@@ -27,18 +26,13 @@ public class NightlyDiscountPhone {
         this.seconds = seconds;
     }
 
-    public Money calculateFee() {
-        Money result = Money.ZERO;
 
-        for (Call call : calls) {
-            if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
-                result = result.plus(
-                        nightlyAmount.times(call.getDuration().getSeconds() / seconds.getSeconds()));
-            } else {
-                result = result.plus(
-                        regularAmount.times(call.getDuration().getSeconds() / seconds.getSeconds()));
-            }
+    @Override
+    protected Money calculateCallFee(Call call) {
+        if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
+            return nightlyAmount.times(call.getDuration().getSeconds() / seconds.getSeconds());
+        } else {
+            return regularAmount.times(call.getDuration().getSeconds() / seconds.getSeconds());
         }
-        return result;
     }
 }

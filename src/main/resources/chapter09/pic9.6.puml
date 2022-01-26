@@ -1,0 +1,22 @@
+@startuml
+'left to right direction
+
+object "Client" as c
+object "Factory" as f
+object "Movie" as m
+
+object "AmountDiscountPolicy" as d
+object "PercentDiscountPolicy" as pdp
+object "AmountDiscountPolicy" as adp
+
+
+c .down.>f :<<use>>
+f .up.> m : <<create>>
+f .right.> adp : <<create>>
+m .right.> d : <<use>>
+c -right-> m
+
+pdp -up-> d
+adp -up-> d
+
+@enduml

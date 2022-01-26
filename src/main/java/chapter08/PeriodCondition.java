@@ -1,4 +1,4 @@
-package chapter02;
+package chapter08;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

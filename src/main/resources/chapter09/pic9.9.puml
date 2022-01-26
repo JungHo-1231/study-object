@@ -1,0 +1,17 @@
+@startuml
+package {
+
+object "Movie" as m
+object "DiscountPolicy" as p
+}
+
+package {
+
+object "AmountDiscountPolicy" as ap
+object "PercentDiscountPolicy" as pd
+ap -up-> p
+pd -up-> p
+}
+
+m -right-> p
+@enduml

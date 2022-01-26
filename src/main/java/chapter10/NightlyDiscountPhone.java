@@ -3,15 +3,13 @@ package chapter10;
 import chapter08.Money;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 심야 할인 요금제 NightlyDiscountPhone
  * <p>
  * 밤 10시 이후 통화에 대한 요금 할인 해주는 방식
  */
-public class NightlyDiscountPhone extends AbstractPhone {
+public class NightlyDiscountPhone extends Phone {
     private static final int LATE_NIGHT_HOUR = 22;
 
     // 밤 10시 이전에 적용할 통화 요금

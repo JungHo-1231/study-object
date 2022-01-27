@@ -1,15 +1,12 @@
-package chapter10;
+package chapter11;
 
 import chapter08.Money;
+import chapter10.Call;
 
 import java.time.Duration;
 
-/**
- * 심야 할인 요금제 NightlyDiscountPhone
- * <p>
- * 밤 10시 이후 통화에 대한 요금 할인 해주는 방식
- */
-public class NightlyDiscountPhone extends Phone {
+public class NightlyDiscountPolicy extends BasicRatePolicy {
+
     private static final int LATE_NIGHT_HOUR = 22;
 
     // 밤 10시 이전에 적용할 통화 요금
@@ -18,8 +15,7 @@ public class NightlyDiscountPhone extends Phone {
     private Money nightlyAmount;
     private Duration seconds;
 
-    public NightlyDiscountPhone(double taxRate, Money regularAmount, Money nightlyAmount, Duration seconds) {
-        super(taxRate);
+    public NightlyDiscountPolicy(Money regularAmount, Money nightlyAmount, Duration seconds) {
         this.regularAmount = regularAmount;
         this.nightlyAmount = nightlyAmount;
         this.seconds = seconds;
@@ -29,8 +25,13 @@ public class NightlyDiscountPhone extends Phone {
     protected Money calculateCallFee(Call call) {
         if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
             return nightlyAmount.times(call.getDuration().getSeconds() / seconds.getSeconds());
-        } else {
-            return regularAmount.times(call.getDuration().getSeconds() / seconds.getSeconds());
         }
+
+        return regularAmount.times(call.getDuration().getSeconds() / seconds.getSeconds());
+    }
+
+    @Override
+    public Money calculateFee(Phone phone) {
+        return null;
     }
 }

@@ -1,0 +1,22 @@
+@startuml
+
+object "Phone" as p
+
+interface "RatePolicy" as rp
+
+abstract "BasicRatePolicy" implements rp
+abstract "AdditionalRatePolicy" implements rp
+
+class "FixedFeePolicy" implements BasicRatePolicy
+class "TimeOfDayDiscountPolicy" implements BasicRatePolicy
+class "DayOfWeekDiscountPolicy" implements BasicRatePolicy
+class "DurationDiscountPolicy" implements BasicRatePolicy
+
+
+class "RateDiscountPolicy" implements AdditionalRatePolicy
+class "TaxablePolicy" implements AdditionalRatePolicy
+
+p -right-> rp
+
+
+@enduml

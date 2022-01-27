@@ -1,0 +1,25 @@
+@startuml
+
+object "BasicRatePolicy" as brp
+object "FeeRule" as fr  {
+feePerDuration
+}
+object "FeeCondition" as fct
+
+object "TimeOfDayFreCondition" as tod
+object "DayOfWeekFeeCondition" as dow
+object "DurationFeeCondition" as dfc
+
+
+
+brp -right-> fr :*
+
+fr -right-> fct
+
+tod -up-> fct
+dow -up-> fct
+dfc -up-> fct
+
+
+
+@enduml

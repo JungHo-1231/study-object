@@ -1,0 +1,25 @@
+package chapter14;
+
+public class FeeRule {
+    /**
+     * 적용 조건
+     */
+    private FeeCondition feeCondition;
+    /**
+     * 단위 요금
+     */
+    private FeePerDuration feePerDuration;
+
+    public FeeRule(FeeCondition feeCondition, FeePerDuration feePerDuration) {
+        this.feeCondition = feeCondition;
+        this.feePerDuration = feePerDuration;
+    }
+
+    public Money calculateFee(Call call) {
+        return feeCondition.findTimeIntervals(call)
+                .stream()
+                .map(each -> feePerDuration.calculate(each))
+                .reduce(Money.ZERO, (first, second) -> first.plus(second))
+                ;
+    }
+}
